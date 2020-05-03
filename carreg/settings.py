@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'users.apps.UsersConfig',
+    'vehicles.apps.VehiclesConfig',
 ]
 
 MIDDLEWARE = [
@@ -83,7 +84,7 @@ DATABASES = {
         'NAME': 'carreg',
         'USER': 'root',
         'PASSWORD': '',
-        'HOST': 'localhost',
+        'HOST': '127.0.0.1',
         'PORT': '',
     }
 }

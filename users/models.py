@@ -35,7 +35,7 @@ class User_Type(models.Model):
 Model for authority
 """
 class Authority(models.Model):
-    id = models.AutoField(auto_created=True, primary_key=True)
+    id = models.CharField(primary_key=True, max_length=100)
     name = models.CharField(max_length=100)
     user_type = models.ForeignKey(User_Type, on_delete=models.CASCADE, null=False)
     pwd = models.CharField(max_length=100, default='')
@@ -50,9 +50,9 @@ class Authority(models.Model):
 Model for agents
 """
 class Agent(models.Model):
-    id = models.AutoField(auto_created=True, primary_key=True)
+    # id = models.AutoField(auto_created=True)
     name = models.CharField(max_length=100)
-    kra_pin = models.CharField(max_length=100)
+    kra_pin = models.CharField(primary_key=True, max_length=100)
     user_type = models.ForeignKey(User_Type, on_delete=models.CASCADE, null=False)
     pwd = models.CharField(max_length=100, default='')
 
@@ -77,7 +77,7 @@ class Owner(models.Model):
     pwd = models.CharField(max_length=100, default='')
 
     def __str__(self):
-        return "Owner: {}".format(self.name)
+        return "Owner: {}".format(self.fullname)
 
     class Meta:
         db_table = 'owners'

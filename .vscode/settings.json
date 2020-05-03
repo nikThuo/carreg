@@ -1,3 +1,9 @@
 {
-    "python.pythonPath": "C:\\Users\\a\\PycharmProjects\\Environments\\carreg\\Scripts"
+    // "python.pythonPath": "carreg_venv/bin/python",
+    "python.pythonPath": "/usr/local/bin/python3.8",
+    "python.autoComplete.extraPaths": [
+    
+    ],
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
 }
