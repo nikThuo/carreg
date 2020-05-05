@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Title -->
+    <title>Administrator</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Loyalty Club dashboard"/>
+    <meta name="keywords" content="web,loyalty club"/>
+    <meta name="author" content="Ron"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+    {% load static %}
+
+    <link rel="shortcut icon" href="{% static 'carreg/assets/images/icon.png ' %}">
+
+    <link href="{% static 'carreg/assets/css/material.css' %}" rel="stylesheet">
+
+
+    <!-- Styles -->
+    <link type="text/css" rel="stylesheet"
+          href="{% static 'carreg/assets/plugins/materialize/css/materialize.min.css' %}"/>
+    <link href="{% static 'carreg/assets/css/material.css' %}" rel="stylesheet">
+    <link href="{% static 'carreg/assets/plugins/material-preloader/css/materialPreloader.min.css' %}"
+          rel="stylesheet">
+
+    <!-- Theme Styles -->
+    <link href="{% static 'carreg/assets/css/alpha.min.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'carreg/assets/css/custom.css' %}" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript">
+
+        // {#            function load_potential(id, county, subcounty, potential, value){#}
+        // {#                localStorage.clear();#}
+        // {#                localStorage.setItem("id", id);#}
+        // {#                localStorage.setItem("county", county);#}
+        // {#                localStorage.setItem("subcounty", subcounty);#}
+        // {#                localStorage.setItem("potential", potential);#}
+        // {#                localStorage.setItem("value", value);#}
+        // {#                window.location.replace("/vehicle_owner_details");#}
+        // {##}
+        // {#            }#}
+         function logout() {
+            localStorage.clear();
+            window.location.replace("/signin");
+        }
+
+        function load_potential() {
+            window.location.replace("/vehicle_confirmation_details");
+
+        }
+    </script>
+
+
+</head>
+<body>
+
+<div class="loader-bg"></div>
+<div class="loader">
+    <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+        <div class="spinner-layer spinner-spinner-teal lighten-1">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+        <div class="spinner-layer spinner-yellow">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+        <div class="spinner-layer spinner-green">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mn-content fixed-sidebar">
+    <main class="mn-inner">
+        <div class="row">
+            <div class="col s12">
+                <div class="page-title">Administrator</div>
+            </div>
+        <a onclick="logout()" class="waves-effect waves-grey"><i class="material-icons">exit_to_app</i>Sign Out</a>
+            <div class="col s12 m12 l12">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Administrator Data</span>
+
+                        {% if users %}
+
+                            <table id="example" class="display responsive-table datatable-example">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Full Names</th>
+                                    <th>ID Number</th>
+                                    <th>Mobile Number</th>
+                                    <th>Date of Birth</th>
+                                    <th>Details</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for user in users %}
+                                    {% if user.national_id != 11111111 %}
+                                        <tr>
+                                            <td></td>
+                                            <td>{{ user.fullname }}</td>
+                                            <td>{{ user.national_id }}</td>
+                                            <td>{{ user.mobile }}</td>
+                                            <td>{{ user.dob }}</td>
+                                            <td>
+                                                {% if user.status == 'active' %}
+                                                    <a class="waves-effect waves-light btn orange "
+                                                            href="/users/deactivate/{{ user.national_id }}"> Deactivate
+                                                    </a>
+                                                {% endif %}
+                                                {% if user.status == 'inactive' %}
+                                                    <a class="waves-effect waves-light btn green "
+                                                           href="/users/deactivate/{{ user.national_id }}"> Activate
+                                                    </a>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                        {% else %}
+                            <p> You currently have no data</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</div>
+<div class="left-sidebar-hover"></div>
+
+<!-- Javascripts -->
+<script src="{% static 'carreg/assets/plugins/jquery/jquery-2.2.0.min.js' %}"></script>
+<script src="{% static 'carreg/assets/plugins/materialize/js/materialize.min.js' %}"></script>
+<script src="{% static 'carreg/assets/plugins/material-preloader/js/materialPreloader.min.js' %}"></script>
+<script src="{% static 'carreg/assets/plugins/jquery-blockui/jquery.blockui.js' %}"></script>
+<script src="{% static 'carreg/assets/plugins/datatables/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'carreg/assets/js/alpha.min.js' %}"></script>
+<script src="{% static 'carreg/assets/js/pages/table-data.js' %}"></script>
+<script src="{% static 'carreg/assets/js/pages/form_elements.js' %}"></script>
+
+</body>
+</html>

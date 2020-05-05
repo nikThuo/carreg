@@ -1,0 +1,68 @@
+<header class="mn-header navbar-fixed">
+    <nav class="maroon darken-1">
+        <div class="nav-wrapper row">
+            <section class="material-design-hamburger navigation-toggle ">
+                <a href="#" data-activates="slide-out"
+                   class="button-collapse show-on-large material-design-hamburger__icon">
+                    <span class="material-design-hamburger__layer"></span>
+                </a>
+            </section>
+            <div class="header-title col s12 m3">
+                <span class="chapter-title">CarReg</span>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<aside id="slide-out" class="side-nav white fixed collapsible ">
+    <div class="side-nav-wrapper">
+
+
+        <ul class="sidebar-menu collapsible collapsible-accordion" data-collapsible="accordion">
+            <li class="no-padding active">
+                <a class="waves-effect waves-grey active" href="/home"><i
+                        class="material-icons">timeline</i>Dashboard</a>
+            </li>
+            <li class="no-padding ">
+                <a class="waves-effect waves-grey" href="/vehicle_registration_details"><i
+                        class="material-icons">school</i>Vehicle Registration</a>
+            </li>
+            <li class="no-padding ">
+                <a class="waves-effect waves-grey" onclick="transfer()"><i
+                        class="material-icons">local_pharmacy</i>Transfer Ownership</a>
+            </li>
+            <li class="no-padding ">
+                <a class="waves-effect waves-grey" onclick="confirmation()"><i class="material-icons">monetization_on</i>Confirm
+                    Ownership</a>
+            </li>
+
+
+            <li class="no-padding">
+                <a onclick="logout()" class="waves-effect waves-grey"><i class="material-icons">exit_to_app</i>Sign Out</a>
+            </li>
+        </ul>
+        <div class="footer">
+            <p class="copyright">CarReg ©</p>
+            <a href="#!">Privacy</a> &amp; <a href="#!">Terms</a>
+        </div>
+    </div>
+    <script>
+        var user = {};
+         user = JSON.parse(localStorage.getItem('userProfile'));
+         if(user===null){
+              window.location.replace("/signin");
+         }
+        function transfer() {
+            window.location.replace("/vehicle_owner/"+user.national_id);
+        }
+        function confirmation() {
+            window.location.replace("/vehicle_confirmation/"+user.national_id);
+        }
+
+        function logout() {
+            localStorage.clear();
+            window.location.replace("/signin");
+        }
+    </script>
+</aside>

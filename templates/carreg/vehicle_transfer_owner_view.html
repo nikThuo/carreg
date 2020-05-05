@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Title -->
+    <title>Vehicle Transfer Details</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="UTF-8">
+    <meta name="description" content="Responsive Admin Dashboard Template"/>
+    <meta name="keywords" content="admin,dashboard"/>
+    <meta name="author" content="Ron"/>
+
+    {% load static %}
+    <!-- Styles -->
+    <link type="text/css" rel="stylesheet"
+          href="{% static 'carreg/assets/plugins/materialize/css/materialize.min.css' %}"/>
+    <link href="{% static 'carreg/assets/css/material.css' %}" rel="stylesheet">
+    <link href="{% static 'carreg/assets/plugins/material-preloader/css/materialPreloader.min.css' %}"
+          rel="stylesheet">
+
+
+    <!-- Theme Styles -->
+    <link href="{% static 'carreg/assets/css/alpha.min.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'carreg/assets/css/custom.css' %}" rel="stylesheet" type="text/css"/>
+
+
+</head>
+<body>
+<div class="loader-bg"></div>
+<div class="loader">
+    <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+        <div class="spinner-layer spinner-spinner-teal lighten-1">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+        <div class="spinner-layer spinner-yellow">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+        <div class="spinner-layer spinner-green">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mn-content fixed-sidebar">
+
+    {% include 'carreg/side_menu.html' %}
+    <main class="mn-inner">
+        <div class="row">
+            <div class="col s12">
+                <div class="page-title">Vehicle Transfer Details</div>
+            </div>
+            <div class="col s12 m12 l12">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Vehicle Transfer Details</span><br>
+                        <a value="Previous Page" onClick="javascript:history.go(-1);"
+                           class="btn maroon waves-effect waves-light ">
+                            <i class="material-icons right">arrow_left</i>
+                            Back
+                        </a>
+                        <div class="row">
+                            <form class="col s12">
+
+                                {% csrf_token %}
+
+                                <div class="row">
+
+                                    <br>
+                                    <p><b>New Owner Details</b></p>
+                                    <div class="input-field col s12 m6">
+                                        <input name="national" id="national" type="text" class="validate col s6"
+                                               required>
+                                        <label for="value">*ID Number</label>
+                                        <a onclick="search_user()"
+                                           class="btn maroon waves-effect waves-light col s6">
+                                            Search
+                                        </a>
+                                    </div>
+                                    <div class="input-field col s12 m6">
+                                        <input name="name" id="name" type="text" readonly>
+                                        <label for="value">*Full Names</label>
+                                    </div>
+                                    <div class="input-field col s12 m6">
+                                        <input name="mobile" id="mobile" type="number" readonly>
+                                        <label for="value">*Mobile Phone Number</label>
+                                    </div>
+                                    <div class="input-field col s12 m6">
+                                        <input name="dob" id="dob" type="text" readonly>
+                                        <label for="value">*Date of Birth</label>
+                                    </div>
+                                    <div class="input-field col s12 m6">
+                                        <input name="pin" id="pin" type="text" readonly>
+                                        <label for="value">*PIN Number</label>
+                                    </div>
+                                    <div class="input-field col s12 m6">
+                                        <input name="email" id="email" type="text" readonly>
+                                        <label for="value">*Email</label>
+                                    </div>
+                                    <p><b>Vehicle Details</b></p>
+                                    {{ vehicle.previous_hash }}
+                                    <div class="input-field col s12 m6">
+                                        <input name="reg" id="reg" type="text" value="{{ vehicle.reg_id }}" readonly>
+                                        <label for="value">*Car Plate Number</label>
+                                    </div>
+                                    <div class="input-field col s12 m6">
+                                        <input name="type" id="type" type="text" value="{{ vehicle.vehicle_type }}"
+                                               readonly>
+                                        <label for="value">*Vehicle Type</label>
+                                    </div>
+                                    <div class="input-field col s12 m6">
+                                        <input name="make" id="make" type="text" value="{{ vehicle.make }}" readonly>
+                                        <label for="value">*Vehicle Make</label>
+                                    </div>
+                                    <div class="input-field col s12 m6">
+                                        <input name="model" id="model" type="text" value="{{ vehicle.vehicle_model }}"
+                                               readonly>
+                                        <label for="value">*Vehicle Model</label>
+                                    </div>
+                                    <div class="input-field col s12 m6">
+                                        <input name="year_of_manufacture" id="year_of_manufacture" type="text"
+                                               value="{{ vehicle.year_of_manufacture }}" readonly>
+                                        <label for="year_of_manufacture">*Year of manufacturer</label>
+                                    </div>
+                                    <br/>
+                                    <p><b>Previous Owner Details</b></p>
+                                    <div class="input-field col s12 m6">
+                                        <input name="p_name" id="p_name" type="text" value="{{ vehicle.fullname }}"
+                                               class="validate" readonly>
+                                        <label for="value">*Full Names</label>
+                                    </div>
+                                    <div class="input-field col s12 m6">
+                                        <input name="p_mobile" id="p_mobile" type="number" value="{{ vehicle.mobile }}"
+                                               class="validate" readonly>
+                                        <label for="value">*Mobile Phone Number</label>
+                                    </div>
+                                    <div class="input-field col s12 m6">
+                                        <input name="p_email" id="p_email" type="text" value="{{ vehicle.email }}"
+                                               class="validate" readonly>
+                                        <label for="value">*Email</label>
+                                    </div>
+                                    <div class="input-field col s12 m6">
+                                        <input name="model" id="model" type="text" value="{{ vehicle.hash }}"
+                                               class="validate" readonly>
+                                        <label for="value">*Previous Hash</label>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col s4">
+                                        <a class="btn maroon waves-effect waves-light " onclick="transfer_vehicle()"
+                                           id="addData">Transfer
+                                            <i class="material-icons right">send</i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<div class="left-sidebar-hover"></div>
+
+<!-- Javascripts -->
+<script src="{% static 'carreg/assets/plugins/jquery/jquery-2.2.0.min.js' %}"></script>
+<script src="{% static 'carreg/assets/plugins/materialize/js/materialize.min.js' %}"></script>
+<script src="{% static 'carreg/assets/plugins/material-preloader/js/materialPreloader.min.js' %}"></script>
+<script src="{% static 'carreg/assets/plugins/jquery-blockui/jquery.blockui.js' %}"></script>
+<script src="{% static 'carreg/assets/js/alpha.min.js' %}"></script>
+<script src="{% static 'carreg/assets/js/pages/form_elements.js' %}"></script>
+<script src="{% static 'carreg/assets/plugins/google-code-prettify/prettify.js' %}"></script>
+
+
+<script type="text/javascript">
+    user = JSON.parse(localStorage.getItem('userProfile'));
+    if (user.national_id === 11111111) {
+        window.location.replace("/admin");
+    }
+
+    var search_user = function () {
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "/users/search/" + $('#national').val(),
+            "method": "GET",
+            "headers": {
+                "content-type": "application/x-www-form-urlencoded",
+                "cache-control": "no-cache"
+            }
+        };
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            if (!response.error) {
+                var user = {};
+                user = response;
+                document.getElementById('name').value = user.fullname;
+                document.getElementById('mobile').value = user.mobile;
+                document.getElementById('dob').value = user.dob;
+                document.getElementById('pin').value = user.pin;
+                document.getElementById('email').value = user.email;
+            }
+            else {
+                Materialize.toast('User not found', 3000, 'rounded')
+                document.getElementById('name').value = '';
+                document.getElementById('mobile').value = '';
+                document.getElementById('dob').value = '';
+                document.getElementById('pin').value = '';
+                document.getElementById('email').value = '';
+            }
+        });
+
+    };
+    // var transfer_vehicle = function () {
+    //     var settings = {
+    //         "async": true,
+    //         "crossDomain": true,
+    //         "url": "/vehicle_reg/transfer_vehicle",
+    //         "method": "POST",
+    //         "headers": {
+    //             "content-type": "application/x-www-form-urlencoded",
+    //             "cache-control": "no-cache"
+    //         },
+    //         "data": {
+    //             'name': $('#name').val(),
+    //             'dob': $('#dob').val(),
+    //             'mobile': $('#mobile').val(),
+    //             'email': $('#email').val(),
+    //             'pin': $('#pin').val(),
+    //             'national': $('#national').val(),
+    //             'reg': $('#reg').val(),
+    //             'type': $('#type').val(),
+    //             'make': $('#make').val(),
+    //             'model': $('#model').val(),
+    //             'p_name': $('#p_name').val(),
+    //             'p_mobile': $('#p_mobile').val(),
+    //             'p_email': $('#p_email').val(),
+    //             'year': $('#year_of_manufacture').val(),
+    //             'owner': {{ vehicle.owner_id }}
+    //         }
+    //     };
+
+    //     $.ajax(settings).done(function (response) {
+    //         console.log(response);
+    //         if (!response.error) {
+    //             window.location.href = "/home";
+    //         }
+    //         else {
+    //             Materialize.toast('Vehicle already transferred', 3000, 'rounded')
+
+    //         }
+    //     });
+
+    // }
+
+</script>
+
+
+</body>
+</html>

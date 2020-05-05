@@ -7,6 +7,24 @@ from users.models import User_Roles, User_Type, Authority, Agent, Owner
 from users.serializers import UserRolesSerializer, UserTypeSerializer, AuthoritySerializer, AgentSerializer, OwnerSerializer
 
 # Create your views here.
+############# ------------ UI ------------ #############
+############# ------------ Sign In ------------ #############
+def login(request):
+    return render(request, template_name='carreg/sign_in.html')
+
+############# ------------ Owner Sign Up ------------ #############
+def owner_register(request):
+    return render(request, template_name='carreg/owner_sign_up.html')
+
+############# ------------ Agent Sign Up ------------ #############
+def agent_register(request):
+    return render(request, template_name='carreg/agent_sign_up.html')
+
+############# ------------ Home ------------ #############
+def index(request):
+    return render(request, template_name='carreg/index.html')
+
+
 ############# ------------ USER ROLES ------------ #############
 @api_view(['GET', 'POST'])
 def role_list(request):

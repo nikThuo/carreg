@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.template.defaultfilters import register
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -9,6 +10,10 @@ from vehicles.serializers import VehiclesSerializer, TransactionsSerializer
 import hashlib as hasher
 import pickle
 
+@register.filter(name='range')
+def filter_year(start, end):
+    return range(start, end)
+
 def hash_block(block):
     sha = hasher.sha3_256()
     sha.update(pickle.dumps(block))
@@ -17,6 +22,32 @@ def hash_block(block):
     return m
 
 # Create your views here.
+############# ------------ UI ------------ #############
+############# ------------ Vehicle Registration ------------ #############
+def vehicle_registration(request):
+    return render(request, template_name='carreg/vehicle_registration.html')
+
+############# ------------ Vehicle Registration Details ------------ #############
+def vehicle_registration_details(request):
+    return render(request, template_name='carreg/vehicle_registration_details.html')
+
+############# ------------ Vehicle Transfer ------------ #############
+def vehicle_transfer(request):
+    return render(request, template_name='carreg/vehicle_transfer_owner.html')
+
+############# ------------ Vehicle Transfer Details ------------ #############
+def vehicle_transfer_details(request):
+    return render(request, template_name='carreg/vehicle_transfer_owner_view.html')
+
+############# ------------ Vehicle Confirm ------------ #############
+def vehicle_confirm(request):
+    return render(request, template_name='carreg/vehicle_transfer_confirmation_status.html')
+
+############# ------------ Vehicle Confirm Details ------------ #############
+def vehicle_confirm_details(request):
+    return render(request, template_name='carreg/vehicle_transfer_confirmation_status_view.html')
+
+
 ############# ------------ VEHICLES ------------ #############
 @api_view(['GET', 'POST'])
 def create_read_vehicle(request):

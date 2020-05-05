@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Title -->
+    <title>Sign Up</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="UTF-8">
+    <meta name="description" content="LoyaltyClub Admin Dashboard "/>
+    <meta name="keywords" content="admin,dashboard,sign_in,loyaltyclub"/>
+    <meta name="author" content="Ron"/>
+
+    {% load static %}
+
+    <!-- Styles -->
+    <link type="text/css" rel="stylesheet"
+          href="{% static 'carreg/assets/plugins/materialize/css/materialize.min.css' %}"/>
+    <link href="{% static 'carreg/assets/css/material.css' %}" rel="stylesheet">
+    <link href="{% static 'carreg/assets/plugins/material-preloader/css/materialPreloader.min.css' %}"
+          rel="stylesheet">
+
+
+    <!-- Theme Styles -->
+    <link href="{% static 'carreg/assets/css/alpha.min.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'carreg/assets/css/custom.css' %}" rel="stylesheet" type="text/css"/>
+
+
+    <!-- HTML5 shim and Respond.js' %} for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js' %} doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="http://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js' %}"></script>
+        <script src="http://oss.maxcdn.com/respond/1.4.2/respond.min.js' %}"></script>
+        <![endif]-->
+
+</head>
+<body class="signin-page">
+<div class="loader-bg"></div>
+<div class="loader">
+    <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+        <div class="spinner-layer spinner-red">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+        <div class="spinner-layer spinner-yellow">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+        <div class="spinner-layer spinner-green">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mn-content valign-wrapper">
+    <main class="mn-inner container">
+        <div class="valign">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <div class="card white darken-1">
+                        <div class="card-content ">
+                            <span class="card-title" style="text-align:center;"><h5>CarReg</h5></span>
+                            <div class="row">
+                                <form class="col s12" action="/users/add_users" method="post">
+                                    <div class="input-field col m6 s12">
+                                        <input id="national" type="text" name="national" class="validate" maxlength="8"
+                                               minlength="6" required>
+                                        <label for="national">ID Number</label>
+                                    </div>
+                                    <div class="input-field col m6 s12">
+                                        <input id="name" type="text" name="name" class="validate" required>
+                                        <label for="name">Surname Name</label>
+                                    </div>
+                                    <div class="input-field col m6 s12">
+                                        <input id="name" type="text" name="name" class="validate" required>
+                                        <label for="name">Other Names</label>
+                                    </div>
+                                    <div class="input-field col m6 s12">
+                                        <select name="gender" id="gender">
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-field col m6 s12">
+                                        <input id="mobile" type="text" name="mobile" class="validate" required>
+                                        <label for="mobile">Phone Number</label>
+                                    </div>
+                                    <div class="input-field col m6 s12">
+                                        <input id="email" type="email" name="email" class="validate" required>
+                                        <label for="email" data-error="Invalid Email"
+                                               data-success="Valid Email">Email Address</label>
+                                    </div>
+                                    <div class="input-field col m6 s12">
+                                        <input id="dob" type="text" name="dob" class="validate datepicker" required>
+                                        <label for="dob">Date of Birth</label>
+                                    </div>
+                                    <div class="input-field col m6 s12">
+                                        <input id="pin" type="text" name="pin" class="validate" size="11" required>
+                                        <label for="pin">KRA PIN</label>
+                                    </div>
+                                    <div class="input-field col m6 s12">
+                                        <input id="password" type="password" name="password" class="validate" required>
+                                        <button onclick="if (password.type == 'text') password.type = 'password';else password.type = 'text';">show
+                                        </button>
+                                        <label for="password">Password</label>
+                                    </div>
+                                    <div class="input-field col m6 s12">
+                                        <input id="password" type="password" name="password" class="validate" required>
+                                        <button onclick="if (password.type == 'text') password.type = 'password';else password.type = 'text';">show
+                                        </button>
+                                        <label for="password">Retype Password</label>
+                                    </div>
+                                    <div class="col s12 right-align">
+                                        {% comment %}<a href="/signin" class="btn maroon waves-effect waves-light m-b-xs">Sign Up</a>{% endcomment %}
+                                        {#													<a href="/" class="white waves-effect waves-light btn m-b-xs">Sign Up</a>#}
+                                        <button class="btn maroon waves-effect waves-light m-b-xs" type="submit"
+                                                name="signin">Sign Up
+                                        </button>
+                                    </div>
+                                    <div class="col s12 left-align">
+                                        <a href="signin" class="waves-red">Sign In</a>
+                                    </div>
+                                    {#                                               <div class="col s12 left-align">#}
+                                    {#												   <a href="forgot.html" class="waves-red">Forgot Password?</a>#}
+                                    {#                                               </div>#}
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Javascripts -->
+<script src="{% static 'carreg/assets/plugins/jquery/jquery-2.2.0.min.js' %}"></script>
+<script src="{% static 'carreg/assets/plugins/materialize/js/materialize.min.js' %}"></script>
+<script src="{% static 'carreg/assets/plugins/material-preloader/js/materialPreloader.min.js' %}"></script>
+<script src="{% static 'carreg/assets/plugins/jquery-blockui/jquery.blockui.js' %}"></script>
+<script src="{% static 'carreg/assets/js/alpha.min.js' %}"></script>
+<script src="{% static 'carreg/assets/js/pages/form_elements.js' %}"></script>
+<script type="text/javascript">
+    // <!--
+    // Form validation code will come here.
+
+    $(document).ready(function () {
+
+    });
+
+    var eighteenYearsAgo = new Date();
+    eighteenYearsAgo = eighteenYearsAgo.setFullYear(eighteenYearsAgo.getFullYear() - 18);
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 4, // Creates a dropdown of 15 years to control year,
+        today: 'Today',
+        clear: 'Clear',
+        close: 'Ok',
+        closeOnSelect: false, // Close upon selecting a date,
+        container: undefined,// ex. 'body' will append picker to body
+        format: 'yyyy-mm-dd',
+        max: new Date(2000, 5, 19)
+    });
+
+    function validate() {
+
+        if (document.myForm.Name.value == "") {
+            //alert( "Please provide your name!" );
+
+            document.myForm.Name.focus();
+            return false;
+        }
+
+        if (document.myForm.EMail.value == "") {
+            alert("Please provide your Email!");
+            document.myForm.EMail.focus();
+            return false;
+        }
+
+    }
+    //-->
+    function validateEmail() {
+        var emailID = document.myForm.EMail.value;
+        atpos = emailID.indexOf("@");
+        dotpos = emailID.lastIndexOf(".");
+
+        if (atpos < 1 || ( dotpos - atpos < 2 )) {
+            alert("Please enter correct email ID")
+            document.myForm.EMail.focus();
+            return false;
+        }
+        return ( true );
+    }
+</script>
+
+<!-- {#		<?php if(isset($error)){?>#}
+{#		<script>#}
+{#			$( document ).ready(function() {#}
+{#			Materialize.toast("<?php echo $message;?>", 4000)#}
+{#			});#}
+{#		</script>#}
+{#		<?php } ?>#} -->
+
+</body>
+</html>

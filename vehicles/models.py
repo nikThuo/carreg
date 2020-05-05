@@ -23,7 +23,7 @@ class Vehicles(models.Model):
         db_table = 'vehicles'
 
 """
-Model for vehicles transactions
+Model for vehicles transactions ==== Registration, Transfer, Confirmation
 """
 class Transactions(models.Model):
     # block_id = models.AutoField(auto_created=True)
