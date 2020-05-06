@@ -93,7 +93,7 @@
                             Back
                         </a>
                         <div class="row">
-                            <input id="phash" type="text" readonly>
+                            <!-- <input id="phash" type="text" readonly> -->
                             <form action="" method="POST" class="col s12">
 
                                 {% csrf_token %}
@@ -123,13 +123,13 @@
                                         <input name="email" id="email" type="text" class="validate" readonly>
                                         <label for="value">*Email</label>
                                     </div>
-                                    <div hidden class="input-field col s12 m6">
+                                    <!-- <div hidden class="input-field col s12 m6">
                                         <input name="phash" id="phash" type="hidden" class="validate" readonly>
                                         <label for="value">*Previous Hash</label>
-                                    </div>
+                                    </div> -->
                                     <div class="input-field col s12 m6">
                                         <input name="reg" id="reg" type="text" class="validate" readonly>
-                                        <label for="value">*Car Plate Number</label>
+                                        <label for="value">*Vehicle Plate Number</label>
                                     </div>
                                     <div class="input-field col s12 m6">
                                         <input name="type" id="type" type="text" class="validate" readonly>
@@ -145,7 +145,7 @@
                                     </div>
                                     <div class="input-field col s12 m6">
                                         <input name="year" id="year" type="text" class="validate" readonly>
-                                        <label for="value">*Year</label>
+                                        <label for="value">*Year of Manufacture</label>
                                     </div>
 
 
@@ -191,7 +191,7 @@
     console.log(car);
 
     $(document).ready(function () {
-        document.getElementById('phash').value = car.hash;
+        // document.getElementById('phash').value = car.hash;
         document.getElementById('year').value = car.year;
         document.getElementById('type').value = car.type;
         document.getElementById('reg').value = car.reg_no;

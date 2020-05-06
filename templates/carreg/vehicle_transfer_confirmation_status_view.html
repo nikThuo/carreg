@@ -102,7 +102,7 @@
                                     <p><b>Particulars of Vehicle</b></p>
                                     <div class="input-field col s12 m6">
                                         <input name="reg" id="reg" type="text" value="{{ vehicle.reg_id }}" readonly>
-                                        <label for="value">*Car Plate Number</label>
+                                        <label for="value">*Vehicle Plate Number</label>
                                     </div>
                                     <div class="input-field col s12 m6">
                                         <input name="type" id="type" type="text" value="{{ vehicle.vehicle_type }}"
@@ -117,6 +117,11 @@
                                         <input name="model" id="model" type="text" value="{{ vehicle.vehicle_model }}"
                                                readonly>
                                         <label for="value">*Vehicle Model</label>
+                                    </div>
+                                    <div class="input-field col s12 m6">
+                                        <input name="year_of_manufacture" id="year_of_manufacture" type="text"
+                                               value="{{ vehicle.year_of_manufacture }}" readonly>
+                                        <label for="year_of_manufacture">*Year of manufacturer</label>
                                     </div>
 
                                     <br>
@@ -146,7 +151,7 @@
                                     </div>
                                     <div class="input-field col s12 m6">
                                         <input name="email" id="email" type="text" value="{{ vehicle.email }}" readonly>
-                                        <label for="value">*Email</label>
+                                        <label for="value">*Email Address</label>
                                     </div>
 
                                     <p><b>Previous Owner Details</b></p>
@@ -156,6 +161,11 @@
                                         <label for="value">*Full Names</label>
                                     </div>
                                     <div class="input-field col s12 m6">
+                                        <input name="national" id="national" type="text"
+                                               value="{{  }}" readonly>
+                                        <label for="value">*ID Number</label>
+                                    </div>
+                                    <div class="input-field col s12 m6">
                                         <input name="p_mobile" id="p_mobile" type="number"
                                                value="{{ vehicle.previous_owner_mobile }}" readonly>
                                         <label for="value">*Mobile Phone Number</label>
@@ -163,12 +173,12 @@
                                     <div class="input-field col s12 m6">
                                         <input name="p_email" id="p_email" type="text"
                                                value="{{ vehicle.previous_owner_email }}" readonly>
-                                        <label for="value">*Email</label>
+                                        <label for="value">*Email Address</label>
                                     </div>
-                                    <div class="input-field col s12 m6">
+                                    <!-- <div class="input-field col s12 m6">
                                         <input name="model" id="model" type="text" value="{{ vehicle.hash }}">
                                         <label for="value">*Previous Hash</label>
-                                    </div>
+                                    </div> -->
 
                                 </div>
 

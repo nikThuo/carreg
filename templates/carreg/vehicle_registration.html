@@ -106,7 +106,7 @@
                                 <div class="row">
                                     <div class="input-field col s12 m6">
                                         <input name="reg" id="reg" type="text" class="validate" required>
-                                        <label for="value">*Car Plate Number</label>
+                                        <label for="value">*Vehicle Plate Number</label>
                                     </div>
                                     <div class="input-field col s12 m6">
                                         <input name="type" id="type" type="text" class="validate" required>
@@ -123,7 +123,7 @@
                                     <div class="input-field col s12 m6">
                                         <select name="year" id="year">
                                             <option value="">Year...</option>
-                                            {% for i in 2011|range:2019 %}
+                                            {% for i in 2013|range:2021 %}
                                                 <option value="{{ i }}">{{ i }}</option>
                                             {% endfor %}
                                         </select>

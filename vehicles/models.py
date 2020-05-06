@@ -1,5 +1,5 @@
 from django.db import models
-from users.models import Owner, Agent
+from users.models import Owner, Agent, Authority
 
 import uuid 
 
@@ -13,6 +13,7 @@ class Vehicles(models.Model):
     car_make = models.CharField(max_length=100)
     car_type = models.CharField(max_length=100)
     car_model = models.CharField(max_length=100)
+    year_of_manufacture = models.CharField(max_length=100)
     hash = models.CharField(max_length=100)
     timestamp = models.DateTimeField(auto_now_add=True)
     
@@ -31,6 +32,7 @@ class Transactions(models.Model):
     car_reg = models.ForeignKey(Vehicles, on_delete=models.CASCADE, null=True, related_name='related_transactions')
     national = models.ForeignKey(Owner, on_delete=models.CASCADE, null=True, related_name='related_transactions')
     kra = models.ForeignKey(Agent, on_delete=models.CASCADE, blank=True, related_name='related_transactions')
+    authority = models.ForeignKey(Authority, on_delete=models.CASCADE, blank=True, related_name='related_transactions')
     status = models.CharField(max_length=100) # owned, transferred, pending
     previous_hash = models.CharField(max_length=100)
     hash = models.CharField(max_length=100)
